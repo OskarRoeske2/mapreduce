@@ -35,7 +35,10 @@ for line in sys.stdin:
     data = line.strip().split("\t")
 
     # store the 6 elements of the tuple in seperate variables
-    date, time, item, category, sales, payment = data
+    try:
+        date, time, item, category, sales, payment = data
+    except:
+         print("ERROR")
 
     # Write the key-value combination to standard output (stdout)
     sales = data.groupBy('category').sum()
