@@ -40,6 +40,7 @@ for line in sys.stdin:
     # is the new key different than the previous key?
     # This means the line starts with a new key (key changes e.g. from "Visa" to "Cash")
     # Remember that our keys are sorted
+    counter = 0
     if previous_key != None and previous_key != key:
         # Then write the result of the old key (Key=category, Value= Sum of Sales)
         # to the standart output (stdout)
@@ -48,6 +49,8 @@ for line in sys.stdin:
         sys.stdout.write("{0}\t{1}\n".format(previous_key, sum_of_values))
         # Sum of sales starts again with 0
         sum_of_values = 0
+        counter += 1
+
 
     # Add the value to the total sales
     # a += b is the same as a = a + b
@@ -58,4 +61,4 @@ for line in sys.stdin:
     previous_key = key
 
 # write the last result to stdout
-sys.stdout.write("{0}\t{1}\n".format(previous_key, sum_of_values))
+sys.stdout.write("{0}\t{1}\n".format(previous_key, counter))
